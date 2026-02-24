@@ -1,0 +1,40 @@
+<h2 class="mb-3">Task List</h2>
+<button class="btn btn-primary mb-3" (click)="addTask()">Add Task</button>
+
+<!-- Filter input -->
+<div class="mb-3">
+  <input type="text" class="form-control" placeholder="Filter tasks..." [(ngModel)]="filterText" (input)="onFilterChange()">
+</div>
+
+<table class="table table-bordered table-hover">
+  <thead class="table-light">
+    <tr>
+      <th (click)="setSort('title')" style="cursor:pointer">
+        Title
+        <span *ngIf="sortColumn==='title'">{{ sortDirection==='asc' ? '▲' : '▼' }}</span>
+      </th>
+      <th (click)="setSort('description')" style="cursor:pointer">
+        Description
+        <span *ngIf="sortColumn==='description'">{{ sortDirection==='asc' ? '▲' : '▼' }}</span>
+      </th>
+      <th (click)="setSort('isCompleted')" style="cursor:pointer">
+        Completed
+        <span *ngIf="sortColumn==='isCompleted'">{{ sortDirection==='asc' ? '▲' : '▼' }}</span>
+      </th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let task of filteredTasks">
+      <td>{{ task.title }}</td>
+      <td>{{ task.description }}</td>
+      <td>
+        <input type="checkbox" [checked]="task.isCompleted" (change)="toggleComplete(task)">
+      </td>
+      <td>
+        <button class="btn btn-sm btn-warning me-2" (click)="editTask(task.id!)">Edit</button>
+        <button class="btn btn-sm btn-danger" (click)="deleteTask(task.id!)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

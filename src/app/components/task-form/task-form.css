@@ -1,0 +1,27 @@
+.form-container {
+  width: 400px;
+  padding: 20px;
+  border: 1px solid #ddd;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 6px;
+}
+
+button {
+  padding: 8px 15px;
+}
+
+.loader {
+  color: blue;
+  font-weight: bold;
+}
+.error {
+  color: red;
+  font-size: 12px;
+}
